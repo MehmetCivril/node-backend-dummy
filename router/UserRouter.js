@@ -35,7 +35,6 @@ UserRouter.post("/login", async (req, res) => {
         .status(404)
         .send({ status: false, message: "Password is incorrect" })
     }
-    //console.log(process.env.KEYFORJWT)
     let access_token = jwt.sign(
       // sign özelliğini kullandık.
       {
