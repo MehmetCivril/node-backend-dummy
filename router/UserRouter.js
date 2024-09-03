@@ -4,6 +4,7 @@ const UserRouter = express.Router()
 const jwt = require("jsonwebtoken")
 const tokenControl = require("../middleware/auth")
 
+
 UserRouter.post("/register", async (req, res) => {
   try {
     let savedUser = await User.create(req.body)
