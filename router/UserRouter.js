@@ -4,7 +4,6 @@ const UserRouter = express.Router()
 const jwt = require("jsonwebtoken")
 const tokenControl = require("../middleware/auth")
 
-
 UserRouter.post("/register", async (req, res) => {
   try {
     let savedUser = await User.create(req.body)
@@ -39,7 +38,11 @@ UserRouter.post("/login", async (req, res) => {
     //console.log(process.env.KEYFORJWT)
     let access_token = jwt.sign(
       // sign özelliğini kullandık.
-      { id: enteredUser._id, username: enteredUser.username },
+      {
+        id: enteredUser._id,
+        username: enteredUser.username,
+        email: enteredUser.email,
+      },
       process.env.KEYFORJWT,
       { expiresIn: "30d" }
     )
